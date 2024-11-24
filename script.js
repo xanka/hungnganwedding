@@ -234,7 +234,7 @@ function loadWeddingImages(folderPath, containerId) {
 let images = [];
 let currentImageIndex = 0;
 
-function loadGallery(jsonPath, baseUrl, containerId) {
+function loadGallery(jsonPath, containerId) {
     fetch(jsonPath)
         .then(response => {
             if (!response.ok) {
@@ -242,7 +242,7 @@ function loadGallery(jsonPath, baseUrl, containerId) {
             }
             return response.json();
         })
-        .then(imageNames => {
+        .then(imageUrls => {
             const container = document.getElementById(containerId);
             if (!container) {
                 throw new Error(`Container with ID "${containerId}" not found`);
@@ -250,26 +250,27 @@ function loadGallery(jsonPath, baseUrl, containerId) {
 
             // Clear the container to avoid duplicates
             container.innerHTML = "";
+            // Desired image size for optimization
+            const baseWidth = 360; // Adjust width as needed
+            const baseHeight = 540; // Adjust height as needed
 
-            // Loop through image names and create gallery items
-            imageNames.forEach((imageName, index) => {
-                const fullImageUrl = `${baseUrl}${imageName}`;
-
+            // Loop through image URLs and create gallery items
+            imageUrls.forEach((imageUrl, index) => {
                 const galleryItem = document.createElement("div");
                 galleryItem.className = "gallery-item";
                 galleryItem.onclick = () => openPopup(index);
 
                 const img = document.createElement("img");
-                img.src = fullImageUrl;
+                img.src = imageUrl + `&w=${baseWidth}&h=${baseWidth}`;
                 img.alt = `Gallery Image ${index + 1}`;
-                img.loading = "lazy"; // Use lazy loading for better performance
+                img.loading = "lazy"; // Lazy loading for performance
 
                 galleryItem.appendChild(img);
                 container.appendChild(galleryItem);
             });
 
             // Populate global images array for popup use
-            images = imageNames.map(imageName => `${baseUrl}${imageName}`);
+            images = imageUrls;
         })
         .catch(err => console.error("Failed to load gallery images:", err));
 }
@@ -305,10 +306,11 @@ function updatePopupImage() {
 function renderThumbnails() {
     const thumbnailContainer = document.querySelector(".thumbnail");
     thumbnailContainer.innerHTML = ""; // Clear existing thumbnails
-
+    const thumbnailWidth = 81;
+    const thumbnailHeight = 121;
     images.forEach((src, index) => {
         const thumb = document.createElement("img");
-        thumb.src = src;
+        thumb.src = src + `&w=${thumbnailWidth}&h=${thumbnailHeight}`;
         thumb.alt = `Thumbnail ${index + 1}`;
         thumb.className = index === currentImageIndex ? "active" : "";
         thumb.onclick = () => {
@@ -328,7 +330,7 @@ function updateThumbnails() {
 }
 
 // Example Usage
-loadGallery("images.json", "wedding-images/", "gallery-images");
+loadGallery("images.json", "gallery-images");
 
 
 document.addEventListener("DOMContentLoaded", loadGallery);

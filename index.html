@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <a href="#story" class="nav-link">Our Story</a>
+        <a href="#schedule" class="nav-link">Event Schedule</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Xuân Hưng &amp; Tuyết Ngân</h1>
+      <p>Save the Date - December 22, 2024</p>
+      <div class="countdown">Countdown: 245 days</div>
+      <a href="#" class="rsvp-btn">RSVP Now</a>
+    </section>
+
+    <section class="wedding-container">
+      <div class="flex-row gap-3">
+        <div class="flex-column flex-column-6">
+          <div class="box">
+            <h2>TIỆC CƯỚI NHÀ TRAI - XUÂN HƯNG</h2>
+            <div
+              class="image-box"
+              style="background-image: url(./wedding-images/DSC_6186.JPG)"
+            ></div>
+            <div class="info">
+              Thôn 1, Xã Kiến Thành, Huyện Đắk R'Lấp, Tỉnh Đắk Nông
+            </div>
+            <div class="date-info">11 PM, 22/12/2024</div>
+            <div class="flex-row bcsc">
+              <div class="flex-column flex-column-6">
+                <div
+                  class="add-to-calendar"
+                  onclick="window.addToCalendar('22/12/2024 11:00')"
+                >
+                  Thêm vào lịch
+                </div>
+              </div>
+              <div class="flex-column flex-column-6">
+                <div class="map">Xem Bản Đồ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-column flex-column-6">
+          <div class="box">
+            <h2>TIỆC CƯỚI NHÀ GÁI - TUYẾT NGÂN</h2>
+            <div
+              class="image-box"
+              style="background-image: url(./wedding-images/DSC_5651.JPG)"
+            ></div>
+            <div class="info">
+              Thôn 2, Xã Đắk HLơ, Huyện KBang, Tỉnh Gia Lai
+            </div>
+            <div class="date-info">11 PM, 19/12/2024</div>
+            <div class="flex-row bcsc">
+              <div class="flex-column flex-column-6">
+                <div
+                  class="add-to-calendar"
+                  onclick="window.addToCalendar('19/12/2022 11:00')"
+                >
+                  Thêm vào lịch
+                </div>
+              </div>
+              <div class="flex-column flex-column-6">
+                <div class="map">Xem Bản Đồ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="calendar-popup"
+        id="calendarPopup"
+        onclick="window.closePopup(event)"
+      >
+        <div class="calendar-links" onclick="event.stopPropagation()">
+          <h3>Thêm vào lịch</h3>
+          <a href="#" id="googleLink" target="_blank">Add to Google Calendar</a>
+          <a href="#" id="outlookLink" target="_blank"
+            >Add to Outlook Calendar</a
+          >
+          <a href="#" id="microsoftLink" target="_blank"
+            >Add to Microsoft Teams</a
+          >
+          <a href="#" id="appleLink" download="event.ics"
+            >Add to Apple Calendar</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story">
+      <h2 class="section-title">Our Story</h2>
+      <p class="section-content">
+        From our first meeting to now, our journey has been filled with love,
+        laughter, and unforgettable memories. We’re excited to continue this
+        adventure together.
+      </p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <h2 class="section-title">Album Hình Cưới</h2>
+      <p class="section-content">
+        Take a look at some of our cherished moments together.
+      </p>
+      <div class="section-content">
+        <div class="gallery" id="gallery-images"></div>
+        
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <img id="popup-image" src="" alt="Popup Image" />
+                <div class="thumbnail"></div>
+                <button onclick="prevImage()">&#10094;</button>
+                <button onclick="nextImage()">&#10095;</button>
+                <button onclick="closePopup()">Close</button>
+            </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-content">
+        For any questions or special requests, please feel free to reach out!
+      </p>
+      <p class="section-content">
+        <strong>Email:</strong> ourwedding@example.com<br />
+        <strong>Phone:</strong> +123-456-7890
+      </p>
+    </section>
+
+    <section class="greeting-toggle" id="greetingToggle">
+      <span>🎉</span>
+      <!-- This can be an icon or text indicating the greeting function -->
+    </section>
+
+    <section class="greeting-container" id="greetingContainer">
+      <h1>Wedding Greetings</h1>
+      <div class="greeting-history" id="greetingHistory"></div>
+      <div class="input-container">
+        <input
+          type="text"
+          id="greetingInput"
+          placeholder="Type your wedding greeting here..."
+        />
+        <button id="sendGreetingBtn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="send-icon"
+          >
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polyline points="22 2 15 22 11 13 2 9 22 2"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <div class="thank-you">
+      <h3>Thank You for Celebrating with Us!</h3>
+      <p>
+        We are so grateful to have you as part of our special day. Your presence
+        is the greatest gift we could ask for!
+      </p>
+    </div>
+
+    <footer>
+      <p>&copy; Xuân Hưng &amp; Tuyết Ngân's Wedding | All rights reserved.</p>
+    </footer>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

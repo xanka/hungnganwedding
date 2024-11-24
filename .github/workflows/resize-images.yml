@@ -3,7 +3,7 @@ name: Resize Images
 on:
   push:
     paths:
-      - wedding-images/**  # Trigger the workflow when images in wedding-image folder are added or modified
+      - wedding-images/**  # Trigger the workflow when images in wedding-images folder are added or modified
     branches:
       - master
       - main
@@ -26,7 +26,7 @@ jobs:
     - name: Resize Images
       run: |
         mkdir -p main-images thumbnail-images
-        for file in wedding-image/*.{jpg,jpeg,png,gif}; do
+        for file in wedding-images/*.{jpg,jpeg,png,gif}; do
           [ -e "$file" ] || continue  # Skip if no files match
           base=$(basename "$file")
           convert "$file" -resize 360x540\> "main-images/$base"  # Resize to 360x540

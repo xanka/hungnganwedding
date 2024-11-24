@@ -316,7 +316,7 @@ function updateThumbnails() {
 }
 
 // Example Usage
-loadGallery("wedding-images/", "gallery-images");
+loadGallery("wedding-images/tree/master/", "gallery-images");
 
 
 document.addEventListener("DOMContentLoaded", loadGallery);

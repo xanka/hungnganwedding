@@ -188,38 +188,38 @@ greetingInput.addEventListener('keydown', (event) => {
 
 // gallery
 
-function loadWeddingImages(folderPath, containerId) {
-    fetch(folderPath)
-        .then(response => response.text())
-        .then(html => {
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = html;
-            const links = Array.from(tempDiv.querySelectorAll("a"))
-                .map(link => link.href)
-                .filter(href => /\.(jpg|jpeg|png|gif)$/i.test(href));
+// function loadWeddingImages(folderPath, containerId) {
+//     fetch(folderPath)
+//         .then(response => response.text())
+//         .then(html => {
+//             const tempDiv = document.createElement("div");
+//             tempDiv.innerHTML = html;
+//             const links = Array.from(tempDiv.querySelectorAll("a"))
+//                 .map(link => link.href)
+//                 .filter(href => /\.(jpg|jpeg|png|gif)$/i.test(href));
 
-            const container = document.getElementById(containerId);
-            links.forEach((src, index) => {
-                const galleryItem = document.createElement("div");
-                galleryItem.className = "gallery-item";
-                galleryItem.onclick = () => openPopup(index);
+//             const container = document.getElementById(containerId);
+//             links.forEach((src, index) => {
+//                 const galleryItem = document.createElement("div");
+//                 galleryItem.className = "gallery-item";
+//                 galleryItem.onclick = () => openPopup(index);
 
-                const img = document.createElement("img");
-                img.src = src;
-                img.alt = "Gallery Image";
+//                 const img = document.createElement("img");
+//                 img.src = src;
+//                 img.alt = "Gallery Image";
 
-                galleryItem.appendChild(img);
-                container.appendChild(galleryItem);
-            });
+//                 galleryItem.appendChild(img);
+//                 container.appendChild(galleryItem);
+//             });
 
-            // Populate images array for popup
-            images = links;
-        })
-        .catch(err => console.error("Failed to load images:", err));
-}
+//             // Populate images array for popup
+//             images = links;
+//         })
+//         .catch(err => console.error("Failed to load images:", err));
+// }
 
-// Usage example
-// loadWeddingImages("./wedding-images/", "gallery-images");
+// // Usage example
+// loadWeddingImages("main-images/", "gallery-images");
 
 
 
@@ -250,9 +250,6 @@ function loadGallery(jsonPath, containerId) {
 
             // Clear the container to avoid duplicates
             container.innerHTML = "";
-            // Desired image size for optimization
-            const baseWidth = 360; // Adjust width as needed
-            const baseHeight = 540; // Adjust height as needed
 
             // Loop through image URLs and create gallery items
             imageUrls.forEach((imageUrl, index) => {
@@ -261,7 +258,7 @@ function loadGallery(jsonPath, containerId) {
                 galleryItem.onclick = () => openPopup(index);
 
                 const img = document.createElement("img");
-                img.src = imageUrl + `&w=${baseWidth}&h=${baseWidth}`;
+                img.src = 'main-images/' + imageUrl;
                 img.alt = `Gallery Image ${index + 1}`;
                 img.loading = "lazy"; // Lazy loading for performance
 
@@ -299,18 +296,16 @@ function prevImage() {
 
 function updatePopupImage() {
     const popupImage = document.getElementById("popup-image");
-    popupImage.src = images[currentImageIndex];
+    popupImage.src = 'main-images/' + images[currentImageIndex];
     updateThumbnails();
 }
 
 function renderThumbnails() {
     const thumbnailContainer = document.querySelector(".thumbnail");
     thumbnailContainer.innerHTML = ""; // Clear existing thumbnails
-    const thumbnailWidth = 81;
-    const thumbnailHeight = 121;
     images.forEach((src, index) => {
         const thumb = document.createElement("img");
-        thumb.src = src + `&w=${thumbnailWidth}&h=${thumbnailHeight}`;
+        thumb.src = 'thumbnail-images/' + src;
         thumb.alt = `Thumbnail ${index + 1}`;
         thumb.className = index === currentImageIndex ? "active" : "";
         thumb.onclick = () => {

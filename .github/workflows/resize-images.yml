@@ -6,6 +6,7 @@ on:
       - wedding-images/**  # Trigger the workflow when images in wedding-image folder are added or modified
     branches:
       - master
+    workflow_dispatch:
 
 jobs:
   resize:

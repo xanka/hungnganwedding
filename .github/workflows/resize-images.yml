@@ -3,7 +3,9 @@ name: Resize Images
 on:
   push:
     paths:
-      - wedding-image/**  # Trigger the workflow when images in wedding-image folder are added or modified
+      - wedding-images/**  # Trigger the workflow when images in wedding-image folder are added or modified
+    branches:
+      - master
 
 jobs:
   resize:

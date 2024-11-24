@@ -32,8 +32,8 @@ jobs:
     # Step 4: Commit and push the resized images
     - name: Commit and push resized images
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "xanka"
+        git config user.email "mikenps01457@gmail.com"
         git add main-images thumbnail-images
         git commit -m "Add resized images for main and thumbnails"
         git push

@@ -26,7 +26,8 @@ jobs:
     - name: Resize Images
       run: |
         mkdir -p main-images thumbnail-images
-        for file in wedding-images/*.{jpg,jpeg,png,gif}; do
+        shopt -s nocaseglob
+        for file in wedding-images/*.jpg; do
           [ -e "$file" ] || continue  # Skip if no files match
           base=$(basename "$file")
           convert "$file" -resize 360x540\> "main-images/$base"  # Resize to 360x540

@@ -1,0 +1,538 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* General Styles */
+body {
+  background-color: #f8f8f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; /* CSS smooth scrolling */
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+header {
+  background: linear-gradient(135deg, #ff2a6eb3, #f6ecf2, #ff2a6eb3);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #7b5252;
+  font-size: 18px;
+}
+
+.nav a::after {
+  display: block;
+  content: "";
+  margin-top: 5px;
+  border-bottom: solid 1.5px #dab88d;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+  transform-origin: 0% 50%;
+}
+
+.nav a:hover:after {
+  transform: scaleX(1);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  background-image: url("./wedding-images/DSC_5893.JPG");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.hero h1 {
+  font-size: 48px;
+  font-family: "Great Vibes", cursive;
+  margin: 0;
+  color: #f0f0f0; /* Gold color for visibility and warmth */
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8),
+    -2px -2px 10px rgba(0, 0, 0, 0.5);
+}
+.hero p {
+  font-size: 24px;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+.countdown {
+  margin: 20px 0;
+  font-size: 32px;
+  color: #ffebcd;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+}
+.rsvp-btn {
+  background-color: #e8b4b8;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  background-color: #e8b4b8;
+}
+/* Base Flex Grid */
+.flex-row {
+    display: flex;
+    flex-wrap: wrap; /* Ensure columns wrap */
+    margin-left: -2%; /* Adjust for gap */
+    margin-right: -2%;
+}
+
+.flex-column {
+    padding-left: 2%; /* Match the gap size */
+    padding-right: 2%;
+    flex: 1 1 0%; /* Default flexible columns */
+}
+
+/* Percentage-based Gaps */
+.gap-0 .flex-column {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.gap-1 .flex-column {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.gap-2 .flex-column {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.gap-3 .flex-column {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.gap-4 .flex-column {
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.gap-5 .flex-column {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/* Responsive Fluid Columns */
+.flex-column-1 { flex: 0 0 8.33%; max-width: 8.33%; }
+.flex-column-2 { flex: 0 0 16.66%; max-width: 16.66%; }
+.flex-column-3 { flex: 0 0 25%; max-width: 25%; }
+.flex-column-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.flex-column-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.flex-column-6 { flex: 0 0 50%; max-width: 50%; }
+.flex-column-7 { flex: 0 0 58.33%; max-width: 58.33%; }
+.flex-column-8 { flex: 0 0 66.66%; max-width: 66.66%; }
+.flex-column-9 { flex: 0 0 75%; max-width: 75%; }
+.flex-column-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+.flex-column-11 { flex: 0 0 91.66%; max-width: 91.66%; }
+.flex-column-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* Fixed Columns */
+.flex-fixed-sm { flex: 0 0 150px; max-width: 150px; }
+.flex-fixed-md { flex: 0 0 250px; max-width: 250px; }
+.flex-fixed-lg { flex: 0 0 350px; max-width: 350px; }
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    .flex-column, .flex-column-*, .flex-fixed-sm, .flex-fixed-md, .flex-fixed-lg {
+        flex: 0 0 100%; /* Stack columns on smaller screens */
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .flex-fixed-md { flex: 0 0 200px; max-width: 200px; } /* Adjust fixed widths for tablets */
+    .flex-fixed-lg { flex: 0 0 300px; max-width: 300px; }
+}
+@media (min-width: 1201px) {
+    .bcsc {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+
+
+/* Section Styles */
+section {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0; /* Remove margin */
+  border-radius: 0; /* Remove rounded corners */
+}
+.section-title {
+  font-size: 32px;
+  color: #555;
+  margin-bottom: 15px;
+}
+.section-content {
+  font-size: 18px;
+  color: #666;
+}
+#story {
+  background: linear-gradient(135deg, #f0f4f8, #dbe4f3);
+}
+
+#schedule {
+  background: linear-gradient(135deg, #dbe4f3, #e6ebf5);
+}
+
+#gallery {
+  background: linear-gradient(135deg, #e6ebf5, #f2d5e3);
+}
+
+#contact {
+  background: linear-gradient(135deg, #f2d5e3, #f9e2dd);
+}
+.greeting-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #eb5b87; /* Background color for the toggle */
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.greeting-container {
+  position: fixed;
+  bottom: 70px; /* Above the toggle button */
+  right: 20px;
+  max-width: 600px;
+  width: 300px; /* Set a width for the container */
+  padding: 20px;
+  background-color: #eb5b87; /* Light color */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  display: none; /* Initially hidden */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.greeting-containe h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.greeting-history {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.ms-line {
+  text-align: left;
+  border-bottom: 0.5px solid #dddddd;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.ms {
+  margin: 0.5rem 0;
+}
+
+.greeting-history span {
+  font-size: 0.7em;
+  display: block;
+  text-align: right;
+  color: #d1d1d1;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  line-height: 0;
+}
+
+button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.wedding-container {
+  background-color: #f5f5f5;
+  padding: 3% 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+.box {
+  background-color: #f7bbc817;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 45px 10px;
+}
+.image-box {
+    justify-content: center;
+    width: 90%; /* Full width */
+    max-width: 90%; /* Limit maximum width */
+    background-size: cover; /* Cover the box without distortion */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeat */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px auto 30px auto; /* Center the box */
+
+    /* Maintain 2:3 aspect ratio (751 / 500 = 1.502) */
+    position: relative;
+    padding-bottom: 90%; /* 150.2% of the width for a 2:3 ratio */
+    height: 0; /* Set height to 0 for aspect ratio to work */
+}
+.box h2 {
+  color: #ba4a4a;
+  margin-bottom: 10px;
+}
+.date-info {
+  background-color: #db1f5bbf;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px auto auto;
+  max-width: max-content;
+}
+.thank-you {
+  background-color: #e8e1d4;
+  border: 3px solid #f3cb8b;
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.thank-you h3 {
+  color: #5f3921;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.thank-you p {
+  color: #705437;
+  font-size: 18px;
+}
+.calendar-links {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.calendar-links a {
+  color: #aa6f39;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+/* Popup background overlay */
+.calendar-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+/* Popup content */
+.calendar-links {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+.calendar-links h3 {
+  color: #5f3921;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.calendar-links a {
+  display: block;
+  color: #aa6f39;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 16px;
+}
+.calendar-links a:hover {
+  text-decoration: underline;
+}
+.add-to-calendar, .map {
+    padding: .8rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin-top: 14px;
+    cursor: pointer;
+}
+.add-to-calendar:hover, .map:hover {
+    color: white;
+    background-color: #db1f5bbf;
+    border-color: #db1f5bbf;
+}
+@media (max-width: 768px) {
+    .image-box {
+        padding-bottom: 60%; /* Adjust the height for smaller devices */
+        max-width: 90%; /* Reduce width to fit within smaller screens */
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-content {
+    position: relative;
+    max-width: 80%;
+    text-align: center;
+}
+
+.popup-content img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.thumbnail {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.thumbnail img {
+    width: 80px;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.thumbnail img.active {
+    opacity: 1;
+    transform: scale(1.1);
+    border: 2px solid #fff;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+.popup-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+}
+

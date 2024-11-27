@@ -13,33 +13,39 @@ document.querySelectorAll('.nav-link').forEach(anchor => {
         });
     });
 });
-// Set the date we're counting down to
-const countDownDate = new Date("December 22, 2024 11:00:00").getTime();
 
-// Update the countdown every second
-const countdownFunction = setInterval(function() {
-// Get today's date and time
-const now = new Date().getTime();
+function countDown(element) {
+    const ele = document.querySelector(element);
+    // Set the date we're counting down to
+    const countDownDate = new Date(ele.getAttribute('data-date')).getTime();
 
-// Find the distance between now and the countdown date
-const distance = countDownDate - now;
+    // Update the countdown every second
+    const countdownFunction = setInterval(function() {
+    // Get today's date and time
+    const now = new Date().getTime();
 
-// Time calculations for days, hours, minutes, and seconds
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Find the distance between now and the countdown date
+    const distance = countDownDate - now;
 
-// Output the result in an element with the class "countdown"
-document.querySelector(".countdown").innerHTML = 
-    `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    // Time calculations for days, hours, minutes, and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Output the result in an element with the class "countdown"
+    document.querySelector(element).innerHTML = 
+        `Sắp tới rồi nè: ${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-// If the countdown is over, display a message
-if (distance < 0) {
-    clearInterval(countdownFunction);
-    document.querySelector(".countdown").innerHTML = "The Wedding is Today!";
+    // If the countdown is over, display a message
+    if (distance <= 0) {
+        clearInterval(countdownFunction);
+        ele.innerHTML = distance < 0 ? "Hẹn cưới lần sau nha" : "Hôm nay cưới á!";
+    }
+    }, 1000);
 }
-}, 1000);
+countDown('.countdown-ck');
+countDown('.countdown-vk');
+
 
 window.addToCalendar = function(dateString) {
     const [datePart, timePart] = dateString.split(' ');

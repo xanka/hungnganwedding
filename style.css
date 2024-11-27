@@ -53,7 +53,7 @@ header {
 /* Hero Section */
 .hero {
   text-align: center;
-  background-image: url("./wedding-images/DSC_5893.JPG");
+  background-image: url("./wedding-images/DSC_5893.jpeg");
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -64,7 +64,7 @@ header {
   flex-direction: column;
 }
 .hero h1 {
-  font-size: 48px;
+  font-size: 28px;
   font-family: "Great Vibes", cursive;
   margin: 0;
   color: #f0f0f0; /* Gold color for visibility and warmth */
@@ -72,15 +72,14 @@ header {
     -2px -2px 10px rgba(0, 0, 0, 0.5);
 }
 .hero p {
-  font-size: 24px;
+  font-size: 15px;
   color: #f0f0f0;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
 }
-.countdown {
-  margin: 20px 0;
-  font-size: 32px;
-  color: #ffebcd;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+.countdown-ck, .countdown-vk {
+  margin: 15px 0;
+  font-size: 18px;
+  color: #e8b4b8;
 }
 .rsvp-btn {
   background-color: #e8b4b8;
@@ -90,8 +89,7 @@ header {
   text-decoration: none;
   font-size: 18px;
   color: #ffffff;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-  background-color: #e8b4b8;
+  
 }
 /* Base Flex Grid */
 .flex-row {
@@ -159,15 +157,30 @@ header {
 
 /* Responsive Breakpoints */
 @media (max-width: 768px) {
-    .flex-column, .flex-column-*, .flex-fixed-sm, .flex-fixed-md, .flex-fixed-lg {
+    .flex-column, .flex-column-6, .flex-fixed-sm, .flex-fixed-md, .flex-fixed-lg {
         flex: 0 0 100%; /* Stack columns on smaller screens */
         max-width: 100%;
+        margin-bottom: 3%;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
     .flex-fixed-md { flex: 0 0 200px; max-width: 200px; } /* Adjust fixed widths for tablets */
     .flex-fixed-lg { flex: 0 0 300px; max-width: 300px; }
+    .wedding-container {
+      padding: 3% 10%;
+    }
+}
+@media (min-width: 1024px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+  .hero p {
+    font-size: 24px;
+  }
+  .wedding-container {
+    padding: 3% 10%;
+  }
 }
 @media (min-width: 1201px) {
     .bcsc {
@@ -206,6 +219,7 @@ section {
 
 #gallery {
   background: linear-gradient(135deg, #e6ebf5, #f2d5e3);
+  overflow: hidden;
 }
 
 #contact {
@@ -299,7 +313,6 @@ button svg {
 
 .wedding-container {
   background-color: #f5f5f5;
-  padding: 3% 10%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -340,24 +353,7 @@ button svg {
   margin: 20px auto auto;
   max-width: max-content;
 }
-.thank-you {
-  background-color: #e8e1d4;
-  border: 3px solid #f3cb8b;
-  border-radius: 15px;
-  padding: 20px;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
-.thank-you h3 {
-  color: #5f3921;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-.thank-you p {
-  color: #705437;
-  font-size: 18px;
-}
+
 .calendar-links {
   margin-top: 10px;
   display: flex;
@@ -552,4 +548,19 @@ button svg {
 
 .section-headline {
   margin-bottom: 30px;
+}
+
+footer {
+  background-color: #e8e1d4;
+  border: 3px solid #f3cb8b;
+  text-align: center;
+  padding: 20px 0;
+  letter-spacing: 0.5px;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+  color: #705437;
+  font-size: 18px;
 }

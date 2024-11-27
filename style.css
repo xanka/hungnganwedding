@@ -519,6 +519,20 @@ button svg {
     align-items: center;
 }
 
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+}
+
+.arrow-left {
+  left: 0
+}
+
+.arrow-right {
+  right: 0;
+}
+
 .popup.active {
     display: flex;
 }

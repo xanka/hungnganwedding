@@ -233,6 +233,8 @@ greetingInput.addEventListener('keydown', (event) => {
 
 let images = [];
 let currentImageIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
 
 function loadGallery(jsonPath, containerId) {
     fetch(jsonPath)
@@ -251,6 +253,11 @@ function loadGallery(jsonPath, containerId) {
             // Clear the container to avoid duplicates
             container.innerHTML = "";
 
+            // Shuffle the array
+            for (let i = imageUrls.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [imageUrls[i], imageUrls[j]] = [imageUrls[j], imageUrls[i]]; // Swap elements
+            }
             // Loop through image URLs and create gallery items
             imageUrls.forEach((imageUrl, index) => {
                 const galleryItem = document.createElement("div");
@@ -272,16 +279,18 @@ function loadGallery(jsonPath, containerId) {
         .catch(err => console.error("Failed to load gallery images:", err));
 }
 
-
 function openPopup(index) {
     currentImageIndex = index;
     updatePopupImage();
-    document.getElementById("popup").classList.add("active");
+    const popup = document.getElementById("popup");
+    popup.classList.add("active");
+    addSwipeListeners();
     renderThumbnails();
 }
 
 function closePopup() {
     document.getElementById("popup").classList.remove("active");
+    removeSwipeListeners();
 }
 
 function nextImage() {
@@ -324,9 +333,42 @@ function updateThumbnails() {
     });
 }
 
+// Swipe functionality
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+}
+
+function handleTouchMove(event) {
+    touchEndX = event.touches[0].clientX;
+}
+
+function handleTouchEnd() {
+    const swipeThreshold = 50; // Minimum distance for a swipe to be registered
+    if (touchStartX - touchEndX > swipeThreshold) {
+        nextImage(); // Swipe left
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+        prevImage(); // Swipe right
+    }
+    touchStartX = 0;
+    touchEndX = 0;
+}
+
+function addSwipeListeners() {
+    const popup = document.getElementById("popup");
+    popup.addEventListener("touchstart", handleTouchStart, { passive: true });
+    popup.addEventListener("touchmove", handleTouchMove, { passive: true });
+    popup.addEventListener("touchend", handleTouchEnd, { passive: true });
+}
+
+function removeSwipeListeners() {
+    const popup = document.getElementById("popup");
+    popup.removeEventListener("touchstart", handleTouchStart);
+    popup.removeEventListener("touchmove", handleTouchMove);
+    popup.removeEventListener("touchend", handleTouchEnd);
+}
+
 // Example Usage
 loadGallery("images.json", "gallery-images");
-
 
 document.addEventListener("DOMContentLoaded", loadGallery);
 // Expose functions to the global scope
@@ -334,4 +376,5 @@ window.openPopup = openPopup;
 window.closePopup = closePopup;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
+
 })

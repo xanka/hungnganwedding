@@ -55,12 +55,13 @@ header {
   text-align: center;
   background-image: url("./main-images/DSC_5893.jpeg");
   background-size: cover;
-  background-position: center;
-  height: 400px;
+  background-repeat:no-repeat;
+  background-position: center 40%;
+  height: 530px;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
 }
 .hero h1 {

@@ -27,8 +27,8 @@ jobs:
       run: |
         mkdir -p main-images thumbnail-images
         shopt -s nocaseglob
-        convert wedding-images/DSC_5651.JPG -resize 1600x wedding-images/DSC_5651.jpeg
-        convert wedding-images/DSC_6186.JPG -resize 520x520\> wedding-images/DSC_6186.jpeg
+        convert wedding-images/DSC_5651.JPG -resize 1600x main-images/DSC_5651.jpeg
+        convert wedding-images/DSC_6186.JPG -resize 520x520\> main-images/DSC_6186.jpeg
 
         for file in wedding-images/*.jpg; do
           [ -e "$file" ] || continue  # Skip if no files match

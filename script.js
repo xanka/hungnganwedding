@@ -95,11 +95,13 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const greetingHistory = document.getElementById('greetingHistory');
+const greetingHistoryClone = document.getElementById('greetingHistoryClone');
 const greetingInput = document.getElementById('greetingInput');
 const sendGreetingBtn = document.getElementById('sendGreetingBtn');
 const greetingContainer = document.getElementById('greetingContainer');
 const greetingToggle = document.getElementById('greetingToggle');
-
+const closeGreeting = document.getElementById('closeGreeting');
+const overlay = document.getElementById('overlay');
 
 
 // Generate or retrieve a unique user ID
@@ -111,12 +113,14 @@ if (!userId) {
 
 // Display greetings in history
 function displayGreetings(greetings) {
-    greetingHistory.innerHTML = greetings.map(greeting => {
+    const historyELE = greetings.map(greeting => {
         // Convert Firestore timestamp to JavaScript Date if necessary
         const time = greeting.time instanceof Timestamp ? greeting.time.toDate() : new Date(greeting.time.seconds * 1000);
 
         return `<div class="ms-line"><strong>${greeting.name}</strong> <div class="ms">${greeting.message} </div><span>${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}</span></div>`;
     }).join('');
+    greetingHistory.innerHTML = historyELE;
+    greetingHistoryClone.innerHTML = historyELE
 }
 
 // Load all greetings from Firestore
@@ -143,10 +147,10 @@ async function canSendGreeting() {
 // Send a greeting with rate limiting
 async function sendGreeting() {
     const message = greetingInput.value.trim();
-    const name = prompt("Enter your name:") || "Anonymous";
+    const name = prompt("Nhật tên bạn:") || "Anonymous";
 
     if (!message) {
-        alert("Please enter a greeting message.");
+        alert("Viết đi ngại chi!");
         return;
     }
 
@@ -163,9 +167,9 @@ async function sendGreeting() {
         await addDoc(collection(db, "greetings"), greeting);
         loadGreetings(); // Reload greetings after adding a new one
         greetingInput.value = '';
-        console.log("Greeting sent successfully.");
+        console.log("Cám ơn lời chúc tốt đẹp của bạn nhé.");
     } catch (error) {
-        console.error("Error saving greeting:", error);
+        console.error("Tèo lỗi nè:", error);
     }
 }
 
@@ -177,6 +181,20 @@ loadGreetings();
 
 // Toggle greeting container visibility
 greetingToggle.addEventListener('click', () => {
+    const isVisible = greetingContainer.style.display === 'block';
+    greetingContainer.style.display = isVisible ? 'none' : 'block';
+    if (isVisible) {
+        greetingInput.focus();
+    }
+});
+closeGreeting.addEventListener('click', () => {
+    const isVisible = greetingContainer.style.display === 'block';
+    greetingContainer.style.display = isVisible ? 'none' : 'block';
+    if (isVisible) {
+        greetingInput.focus();
+    }
+});
+overlay.addEventListener('click', () => {
     const isVisible = greetingContainer.style.display === 'block';
     greetingContainer.style.display = isVisible ? 'none' : 'block';
     if (isVisible) {

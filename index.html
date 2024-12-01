@@ -17,10 +17,10 @@
   <body>
     <header>
       <div class="nav">
-        <a href="#story" class="nav-link">Our Story</a>
+        <a href="#story1" class="nav-link">Our Story</a>
         <a href="#schedule" class="nav-link">Event Schedule</a>
-        <a href="#gallery" class="nav-link">Gallery</a>
-        <a href="#contact" class="nav-link">Contact Us</a>
+        <a href="#gallery1" class="nav-link">Gallery</a>
+        <a href="#contact1" class="nav-link">Contact Us</a>
       </div>
     </header>
 
@@ -79,6 +79,7 @@
                 >
                   Thêm vào lịch
                 </div>
+              <div id="story1"></div>
               </div>
               <div class="flex-column flex-column-6">
                 <div class="map"><a href="https://maps.app.goo.gl/3xbx1HdvmNiK39Uz9?g_st=ic" target="_blank" rel="noopener noreferrer">Xem Bản Đồ</a></div>
@@ -94,15 +95,15 @@
       >
         <div class="calendar-links" onclick="event.stopPropagation()">
           <h3>Thêm vào lịch</h3>
-          <a href="#" id="googleLink" target="_blank">Add to Google Calendar</a>
+          <a href="#" id="googleLink" target="_blank">Google Calendar</a>
           <a href="#" id="outlookLink" target="_blank"
-            >Add to Outlook Calendar</a
+            >Outlook Calendar</a
           >
           <a href="#" id="microsoftLink" target="_blank"
-            >Add to Microsoft Teams</a
+            >Microsoft Teams</a
           >
           <a href="#" id="appleLink" download="event.ics"
-            >Add to Apple Calendar</a
+            >Apple Calendar</a
           >
         </div>
       </div>
@@ -159,13 +160,13 @@
         <div class="section">
           <div class="image">
               <img src="story-images/na5.jpg" alt="Image 5">
+              <div id="gallery1"></div>
           </div>
             <div class="content">
                 <h2>Cùng viết tiếp trang sách tình yêu</h2>
                 <p>Cảm ơn anh vì đã đến trong cuộc đời em, vì đã đồng hành cùng em, và vì sẽ tiếp tục cùng em xây dựng một mái ấm, một tương lai tràn đầy yêu thương. Từ ngày hôm nay, chúng ta chính thức có danh phận để chăm sóc, yêu thương và bảo vệ gia đình của nhau. Mỗi bước đi cùng nhau sẽ là một trang sách mới, nơi tình yêu chúng ta sẽ viết nên những câu chuyện đẹp đẽ, bền vững theo thời gian.</p>
             </div>
             <div class="dot"></div>
-
         </div>
     </div>
     </section>
@@ -185,7 +186,7 @@
                 <div class="thumbnail"></div>
                 <button class="arrow arrow-left" onclick="prevImage()">&#10094;</button>
                 <button class="arrow arrow-right" onclick="nextImage()">&#10095;</button>
-                <button class="close-popup" onclick="closePopup()">Close</button>
+                <button class="close-popup" onclick="closePopupX()">&times;</button>
             </div>
         </div>
         
@@ -197,6 +198,30 @@
       <h2 class="section-title">Lời chúc</h2>
       <p>Hãy để lại lời chúc ngọt ngào của bạn cho chúng tớ nhé. Cảm ơn bạn vì đã là một phần không thể thiếu trong ngày trọng đại của chúng tớ!</p>
       <div class="greeting-history" id="greetingHistoryClone"></div>
+      <div class="input-container">
+        <input
+          type="text"
+          id="greetingInputC"
+          placeholder="Lời chúc..."
+        />
+        <button id="sendGreetingBtnC">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="send-icon"
+          >
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polyline points="22 2 15 22 11 13 2 9 22 2"></polyline>
+          </svg>
+        </button>
+      </div>
     </section>
 
     <!-- Contact Us Section -->
@@ -206,7 +231,7 @@
         Bạn có yêu cầu gì đặc biệt, nói chúng tớ biết nha!
       </p>
       <p class="section-content">
-        <strong>Phone:</strong> +84 0898-148-076
+        <strong>Phone:</strong> 0898-148-076
       </p>
     </section>
 
@@ -223,7 +248,7 @@
         <input
           type="text"
           id="greetingInput"
-          placeholder="Type your wedding greeting here..."
+          placeholder="Lời chúc..."
         />
         <button id="sendGreetingBtn">
           <svg
@@ -245,8 +270,7 @@
       </div>
     </section>
 
-    
-    <iframe style="display: none;" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1407501475&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true#t=1%3A20"></iframe>
+    <!-- <iframe id="soundclould" width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1407501475&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=true&visual=false"></iframe> -->
     <footer>
       <p>&copy; Xuân Hưng &amp; Tuyết Ngân Wedding | All rights reserved.</p>
     </footer>

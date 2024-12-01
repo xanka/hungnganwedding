@@ -685,10 +685,16 @@ footer p {
 .greeting-container-clone  > p {
   margin-bottom: 15px;
 }
+.greeting-container-clone .input-container {
+  background: #fbaec1;
+  padding: 10px;
+  border-radius: 4px;
+}
 .greeting-container-clone .greeting-history {
   background: #fbaec1;
   color: white;
   padding: 20px;
+  margin-bottom: 0;
 }
 .greeting-container-clone .greeting-history span {
   color: white;
@@ -697,4 +703,19 @@ footer p {
   .greeting-container-clone {
     max-width: 80%;
   }
+}
+@keyframes jump-shaking {
+  0% { transform: translateX(0) rotate(0)}
+  35% { transform: translateY(0) rotate(0)}
+  85% { transform: translateY(0) rotate(0) }
+  89% { transform: translateY(-2px) rotate(-17deg) }
+  93% { transform: translateY(-3px) rotate(17deg) }
+  98% { transform: translateY(-4px) rotate(-17deg) }
+  100% { transform: translateY(0) rotate(0) }
+}
+.greeting-toggle {
+  animation: jump-shaking 1.83s infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }

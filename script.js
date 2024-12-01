@@ -97,7 +97,9 @@ const db = getFirestore(app);
 const greetingHistory = document.getElementById('greetingHistory');
 const greetingHistoryClone = document.getElementById('greetingHistoryClone');
 const greetingInput = document.getElementById('greetingInput');
+const greetingInputC = document.getElementById('greetingInputC');
 const sendGreetingBtn = document.getElementById('sendGreetingBtn');
+const sendGreetingBtnC = document.getElementById('sendGreetingBtnC');
 const greetingContainer = document.getElementById('greetingContainer');
 const greetingToggle = document.getElementById('greetingToggle');
 const closeGreeting = document.getElementById('closeGreeting');
@@ -145,9 +147,9 @@ async function canSendGreeting() {
 }
 
 // Send a greeting with rate limiting
-async function sendGreeting() {
-    const message = greetingInput.value.trim();
-    const name = prompt("Nhật tên bạn:") || "Anonymous";
+async function sendGreeting(ele) {
+    const message =  ele !== false ? greetingInputC.value.trim() : greetingInput.value.trim() ;
+    const name = prompt("Nhập tên bạn:") || "Anonymous";
 
     if (!message) {
         alert("Viết đi ngại chi!");
@@ -167,6 +169,7 @@ async function sendGreeting() {
         await addDoc(collection(db, "greetings"), greeting);
         loadGreetings(); // Reload greetings after adding a new one
         greetingInput.value = '';
+        greetingInputC.value = '';
         console.log("Cám ơn lời chúc tốt đẹp của bạn nhé.");
     } catch (error) {
         console.error("Tèo lỗi nè:", error);
@@ -174,7 +177,8 @@ async function sendGreeting() {
 }
 
 // Event listener for send button
-sendGreetingBtn.addEventListener('click', sendGreeting);
+sendGreetingBtn.addEventListener('click', () => sendGreeting(false));
+sendGreetingBtnC.addEventListener('click', () => sendGreeting(true));
 
 // Load existing greetings from Firestore when the script runs
 loadGreetings();
@@ -204,6 +208,12 @@ overlay.addEventListener('click', () => {
 
 // allow send message while typing
 greetingInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        sendGreeting();
+    }
+});
+greetingInputC.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
         sendGreeting();
@@ -267,7 +277,7 @@ function openPopup(index) {
     renderThumbnails();
 }
 
-function closePopup() {
+function closePopupX() {
     document.getElementById("popup").classList.remove("active");
     removeSwipeListeners();
 }
@@ -348,11 +358,17 @@ function removeSwipeListeners() {
 
 // Example Usage
 loadGallery("images.json", "gallery-images");
+const hideSoundClould = () => {
+    document.getElementById('soundclould').style.display = "none";
+}
 
-document.addEventListener("DOMContentLoaded", loadGallery);
+document.addEventListener("DOMContentLoaded", () => {
+    loadGallery();
+    setTimeout(hideSoundClould(), 3000);
+});
 // Expose functions to the global scope
 window.openPopup = openPopup;
-window.closePopup = closePopup;
+window.closePopupX = closePopupX;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
 

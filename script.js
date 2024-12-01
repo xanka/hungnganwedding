@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-//import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-//import { getFirestore, collection, query, where, orderBy, addDoc, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getFirestore, collection, query, where, orderBy, addDoc, getDocs, Timestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -91,8 +91,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const greetingHistory = document.getElementById('greetingHistory');
 const greetingInput = document.getElementById('greetingInput');
@@ -173,7 +173,7 @@ async function sendGreeting() {
 sendGreetingBtn.addEventListener('click', sendGreeting);
 
 // Load existing greetings from Firestore when the script runs
-// loadGreetings();
+loadGreetings();
 
 // Toggle greeting container visibility
 greetingToggle.addEventListener('click', () => {
@@ -191,51 +191,6 @@ greetingInput.addEventListener('keydown', (event) => {
         sendGreeting();
     }
 });
-
-// gallery
-
-// function loadWeddingImages(folderPath, containerId) {
-//     fetch(folderPath)
-//         .then(response => response.text())
-//         .then(html => {
-//             const tempDiv = document.createElement("div");
-//             tempDiv.innerHTML = html;
-//             const links = Array.from(tempDiv.querySelectorAll("a"))
-//                 .map(link => link.href)
-//                 .filter(href => /\.(jpg|jpeg|png|gif)$/i.test(href));
-
-//             const container = document.getElementById(containerId);
-//             links.forEach((src, index) => {
-//                 const galleryItem = document.createElement("div");
-//                 galleryItem.className = "gallery-item";
-//                 galleryItem.onclick = () => openPopup(index);
-
-//                 const img = document.createElement("img");
-//                 img.src = src;
-//                 img.alt = "Gallery Image";
-
-//                 galleryItem.appendChild(img);
-//                 container.appendChild(galleryItem);
-//             });
-
-//             // Populate images array for popup
-//             images = links;
-//         })
-//         .catch(err => console.error("Failed to load images:", err));
-// }
-
-// // Usage example
-// loadWeddingImages("main-images/", "gallery-images");
-
-
-
-// let images = [];
-// let currentImageIndex = 0;
-
-// function loadGallery() {
-//     const galleryItems = document.querySelectorAll(".gallery-item img");
-//     images = Array.from(galleryItems).map((img) => img.src);
-// }
 
 let images = [];
 let currentImageIndex = 0;

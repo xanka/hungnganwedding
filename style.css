@@ -709,7 +709,7 @@ footer p {
     max-width: 80%;
   }
   .hero {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 }
 @keyframes jump-shaking {

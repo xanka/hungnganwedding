@@ -356,16 +356,22 @@ function removeSwipeListeners() {
     popup.removeEventListener("touchend", handleTouchEnd);
 }
 
-// Example Usage
+// load gallery images
 loadGallery("images.json", "gallery-images");
-const hideSoundClould = () => {
-    document.getElementById('soundclould').style.display = "none";
+
+const audioPlayer = document.getElementById('audioPlayer');
+window.playPause = () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        document.getElementById('playerVolumeOn').style = 'display: block';
+        document.getElementById('playerVolumeOff').style = 'display: none';
+    } else {
+        audioPlayer.pause();
+        document.getElementById('playerVolumeOn').style = 'display: none';
+        document.getElementById('playerVolumeOff').style = 'display: block';
+    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadGallery();
-    setTimeout(hideSoundClould(), 3000);
-});
 // Expose functions to the global scope
 window.openPopup = openPopup;
 window.closePopupX = closePopupX;

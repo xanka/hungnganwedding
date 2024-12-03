@@ -146,6 +146,18 @@ async function canSendGreeting() {
     return recentGreetings.size < 5;
 }
 
+function scrollToBottom() {
+    greetingHistory.scrollTop = greetingHistory.scrollHeight;
+}
+// Set up a MutationObserver to watch for new child nodes
+const observer = new MutationObserver(() => {
+    scrollToBottom();
+});
+
+// Start observing the target element for child additions
+observer.observe(greetingHistory, { childList: true });
+observer.observe(greetingHistoryClone, { childList: true });
+
 // Send a greeting with rate limiting
 async function sendGreeting(ele) {
     const message =  ele !== false ? greetingInputC.value.trim() : greetingInput.value.trim() ;
@@ -170,7 +182,9 @@ async function sendGreeting(ele) {
         loadGreetings(); // Reload greetings after adding a new one
         greetingInput.value = '';
         greetingInputC.value = '';
-        console.log("Cám ơn lời chúc tốt đẹp của bạn nhé.");
+        alert("Cám ơn lời chúc tốt đẹp của bạn nhé.");
+        greetingHistory.scrollTop = greetingHistory.scrollHeight;
+
     } catch (error) {
         console.error("Tèo lỗi nè:", error);
     }

@@ -268,6 +268,14 @@ section {
   border-radius: 5px;
 }
 
+#greetingHistoryClone {
+  max-height: 400px;
+}
+
+.greeting-container .ms-line {
+  font-size: 14px;
+}
+
 .ms-line {
   text-align: left;
   border-bottom: 0.5px solid #dddddd;

@@ -21,26 +21,26 @@ function countDown(element) {
 
     // Update the countdown every second
     const countdownFunction = setInterval(function() {
-    // Get today's date and time
-    const now = new Date().getTime();
+        // Get today's date and time
+        const now = new Date().getTime();
 
-    // Find the distance between now and the countdown date
-    const distance = countDownDate - now;
+        // Find the distance between now and the countdown date
+        const distance = now - countDownDate;
 
-    // Time calculations for days, hours, minutes, and seconds
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    // Output the result in an element with the class "countdown"
-    document.querySelector(element).innerHTML = 
-        `Sắp tới rồi nè: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        // Time calculations for days, hours, minutes, and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Output the result in an element with the class "countdown"
+        document.querySelector(element).innerHTML = 
+            `Cưới được: ${days}d ${hours}h ${minutes}m ${seconds}s roài`;
 
-    // If the countdown is over, display a message
-    if (distance <= 0) {
-        clearInterval(countdownFunction);
-        ele.innerHTML = distance < 0 ? "Hẹn cưới lần sau nha" : "Hôm nay cưới á!";
-    }
+        // If the countdown is over, display a message
+        if (distance <= 0) {
+            clearInterval(countdownFunction);
+            ele.innerHTML = distance < 0 ? "Hẹn cưới lần sau nha" : "Hôm nay cưới á!";
+        }
     }, 1000);
 }
 countDown('.countdown-ck');
